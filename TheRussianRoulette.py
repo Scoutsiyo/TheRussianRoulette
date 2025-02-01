@@ -1,7 +1,9 @@
 import random
 import pyfiglet
 import os
-
+from playsound import playsound
+import threading
+import time
 
 RED = "\033[31m"
 YELLOW = "\033[33m"
@@ -15,15 +17,25 @@ BRIGHT_CYAN = "\033[96m"
 Alive_message_color = GREEN
 Game_Over_message_color = RED
 Spinning_message_color = YELLOW
+delay = 1
+#Here the sound 1 is Squid game OST and sound 2 is the sound of a revolver shot. You must change this path to the path where you have the sound files.
+def play_sound():
+    playsound(r"C:\Users\yul\OneDrive\Documentos\TheRussianRoulette\Soundtracks\Pink Soldiers (Extended Version) - Squid Game OST.mp3")
+def play_sound2():
+    playsound(r"C:\Users\yul\OneDrive\Documentos\TheRussianRoulette\Soundtracks\Sonido de Disparo de Revolver 38 - Efecto de Sonido.mp3")
 
 
+sound_thread = threading.Thread(target=play_sound, daemon=True)
+sound_thread2 = threading.Thread(target=play_sound2, daemon=True)
+sound_thread.start()
 
 
 def main():
     clear_screen()
     print(welcome_message())
-
+    
     while True:
+        
         a = input(f"{CYAN}How many bullets will be in the revolver?{RESET} {BOLD}{GREEN}(1-5){RESET} ")
         if Get_Level(a):
             break
@@ -46,7 +58,9 @@ def main():
 
         elif decision == 'p':
             if pistol_charger[i] == 1:
+                sound_thread2.start()
                 print(Game_Over_message())
+                time.sleep(delay)
                 break
             else:
                 print(f"{Alive_message()}")
@@ -55,6 +69,9 @@ def main():
 
         else:
             print(f"{RED}Choose a correct decision{RESET}")
+
+
+
 
 
 
