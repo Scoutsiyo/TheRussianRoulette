@@ -19,10 +19,18 @@ Game_Over_message_color = RED
 Spinning_message_color = YELLOW
 delay = 1
 #Here the sound 1 is Squid game OST and sound 2 is the sound of a revolver shot. You must change this path to the path where you have the sound files.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+sound1 = os.path.join(BASE_DIR, "Soundtracks", "Pink Soldiers (Extended Version) - Squid Game OST.mp3")
+sound2 = os.path.join(BASE_DIR, "Soundtracks", "Sonido de Disparo de Revolver 38 - Efecto de Sonido.mp3")
+
+
+
 def play_sound():
-    playsound(r"C:\Users\yul\OneDrive\Documentos\TheRussianRoulette\Soundtracks\Pink Soldiers (Extended Version) - Squid Game OST.mp3")
+    playsound(sound1)
 def play_sound2():
-    playsound(r"C:\Users\yul\OneDrive\Documentos\TheRussianRoulette\Soundtracks\Sonido de Disparo de Revolver 38 - Efecto de Sonido.mp3")
+    playsound(sound2)
 
 
 sound_thread = threading.Thread(target=play_sound, daemon=True)
