@@ -18,7 +18,7 @@ Alive_message_color = GREEN
 Game_Over_message_color = RED
 Spinning_message_color = YELLOW
 delay = 1
-#Here the sound 1 is Squid game OST and sound 2 is the sound of a revolver shot. You must change this path to the path where you have the sound files.
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
